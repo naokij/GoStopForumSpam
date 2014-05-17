@@ -101,6 +101,15 @@ func (c *Client) Search(searchData SearchData) (response SearchResponse, err err
 	if response.Error != "" {
 		return response, errors.New(response.Error)
 	}
+	if response.Ip == nil {
+		response.Ip = new(SearchResponseItem)
+	}
+	if response.Email == nil {
+		response.Email = new(SearchResponseItem)
+	}
+	if response.Username == nil {
+		response.Username = new(SearchResponseItem)
+	}
 	return response, nil
 }
 
